@@ -1,0 +1,47 @@
+1. What is NoSQL data base?
+NoSQL unlike the RDBMS follows dont store data in tabular formats. The data structures used by NoSQL databases (e.g. 
+key-value, wide column, graph, or document) are different from those used by default in relational databases, making 
+some operations faster in NoSQL. NoSQL databases finds its use in big data and real-time web applications. NoSQL 
+Databases are prefered for their simplicity in design and horizontal scaling of cluster nodes to accomodate more 
+capacity and faster execution at comparatively cheaper cost.
+
+
+2. How does data get stored in NoSQl database?
+Key/Value Databases- In this model, data is represented as a collection of key-value pairs. Eg: Voldemort, Redis, 
+Scalaris
+
+Columnar Databases- Stores columns of data together than rows. Query performance is often increased as a result, 
+particularly in very large data sets. eg -HBase, Hypertable, Cassandra
+
+Document Databases -Document-oriented databases are inherently a subclass of the key-value store. A document can 
+have any number of key pair values or key array values. The difference lies in the way the data is processed; in a 
+key-value store the data is considered to be inherently opaque to the database, whereas a document-oriented system 
+relies on internal structure in the document in order to extract metadata that the database engine uses for further 
+optimization. eg -MongoDb, CouchDB
+
+Graph Databases- data whose relations are well represented as a graph consisting of elements interconnected with a 
+finite number of relations between them. The type of data could be social relations, public transport links, road 
+maps or network topologies. eg - InfoGrid, Neo4j
+
+3. What is a column family in HBase?
+Columns in Apache HBase are grouped into column families. All column members of a column family have the same 
+prefix. For example, the columns courses:history and courses:math are both members of the courses column family. The 
+colon character (:) delimits the column family from the . The column family prefix must be composed of printable 
+characters. The qualifying tail, the column family qualifier, can be made of any arbitrary bytes. Column families 
+must be declared up front at schema definition time whereas columns do not need to be defined at schema time but can 
+be conjured on the fly while the table is up an running.
+Physically, all column family members are stored together on the filesystem. Because tunings and storage 
+specifications are done at the column family level, it is advised that all column family members have the same 
+general access pattern and size characteristics
+
+
+4. How many maximum number of columns can be added to HBase table?
+There are no limits to number of columns. Developers can choose either  
+1) more rows with less columns 
+2) more columns with less rows  
+
+
+5. Why columns are not defined at the time of table creation in HBase?
+HBase tables are created with column families which generally is not changed. The column keys are specified after 
+the table is up and running. Operations such as tunings and storage specifications are done at the column family 
+level and are hence stored in separate HFiles. 
